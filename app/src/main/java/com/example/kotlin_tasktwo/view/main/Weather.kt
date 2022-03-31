@@ -7,3 +7,4 @@ data class Weather(
     val temperature: Int = 5,
     val feelsLike: Int = 1)
 private fun getDefaultCity() = City("Москва", 55.0, 37.0)
+

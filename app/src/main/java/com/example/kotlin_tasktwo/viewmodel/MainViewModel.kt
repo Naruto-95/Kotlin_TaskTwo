@@ -32,10 +32,10 @@ class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> =Mu
         Thread{
             sleep(2000)
             val random = Random(15).nextInt()
-            if (random <= 5)
-                liveDataToObserve.postValue(AppState.Success(repositoryImpl.  getWeatherFromRemoteSource()))
-            else
+            if (random > 0)
                 liveDataToObserve.postValue(AppState.Error(IllegalStateException()))
+            else
+                liveDataToObserve.postValue(AppState.Success(repositoryImpl.  getWeatherFromRemoteSource()))
         }.start()
 
     }
