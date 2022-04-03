@@ -2,9 +2,9 @@ package com.example.kotlin_tasktwo.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kotlin_tasktwo.view.main.RepositoryImpl
+import com.example.kotlin_tasktwo.Repository.RepositoryImpl
 import java.lang.Thread.sleep
-import java.util.*
+
 
 class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> =MutableLiveData()) :
     ViewModel() {
@@ -12,33 +12,25 @@ class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> =Mu
 
 
 
-   /* fun getData(): LiveData<Any>{
-        getDataFromLocalSource()
-        return liveDataToObserve
-
-    }*/
-
-
     fun getLiveData() = liveDataToObserve
-    fun getWeather() = getDataFromLocalSource()
-    //fun getWeatherFromRemoteSource() = getDataFromLocalSource()
-    //fun getWeatherFromLocalSource() = getDataFromLocalSource()
+    fun getWeatherRussianFromLocalSource() = getDataFromLocalSource(isRussian = true)
+    fun getWeatherWorldFromLocalSource() = getDataFromLocalSource(isRussian = false)
 
 
 
-
-    private fun getDataFromLocalSource(){
-        liveDataToObserve.postValue(AppState.Loading)
-        Thread{
+    private fun getDataFromLocalSource(isRussian: Boolean) {
+        Thread {
+            liveDataToObserve.postValue(AppState.Loading)
             sleep(2000)
-            val random = Random(15).nextInt()
-            if (random > 0)
-                liveDataToObserve.postValue(AppState.Error(IllegalStateException()))
-            else
-                liveDataToObserve.postValue(AppState.Success(repositoryImpl.  getWeatherFromRemoteSource()))
+            if (true) {
+                val wea = if (!isRussian) repositoryImpl.getWeatherWorldFromLocalSource()
+                else  repositoryImpl.getWeatherRussianFromLocalSource()
+                liveDataToObserve.postValue(AppState.Success(wea))
+            } else
+                liveDataToObserve.postValue(AppState.Error(IllegalAccessException()))
+
         }.start()
 
+
     }
-
-
 }
