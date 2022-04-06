@@ -1,14 +1,20 @@
 package com.example.kotlin_tasktwo.viewmodel
 
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.kotlin_tasktwo.R
 import com.example.kotlin_tasktwo.Repository.RepositoryImpl
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.main_activity.*
 import java.lang.Thread.sleep
+import java.util.*
 
 
 class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> =MutableLiveData()) :
     ViewModel() {
     private val repositoryImpl: RepositoryImpl = RepositoryImpl()
+
 
 
 
@@ -18,10 +24,11 @@ class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> =Mu
 
 
 
-    private fun getDataFromLocalSource(isRussian: Boolean) {
-        Thread {
+    fun getDataFromLocalSource(isRussian: Boolean) = Thread {
             liveDataToObserve.postValue(AppState.Loading)
             sleep(2000)
+            //val random = Random(1).nextInt()
+            //if (random > 0)
             if (true) {
                 val wea = if (!isRussian) repositoryImpl.getWeatherWorldFromLocalSource()
                 else  repositoryImpl.getWeatherRussianFromLocalSource()
@@ -29,8 +36,11 @@ class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> =Mu
             } else
                 liveDataToObserve.postValue(AppState.Error(IllegalAccessException()))
 
+
         }.start()
 
 
-    }
+
+
+
 }

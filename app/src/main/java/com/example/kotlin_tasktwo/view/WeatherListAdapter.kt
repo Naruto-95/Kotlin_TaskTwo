@@ -41,14 +41,16 @@ val binding = RecyclerWeatherListFragmentBinding.inflate(LayoutInflater.from(par
 
    inner class CityHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(weather: Weather) {
-val binding = RecyclerWeatherListFragmentBinding.bind(itemView)
-            binding.tvCityName.text = weather.city.name
-            binding.root.setOnClickListener{
-                onItemListClickListener.onitemClik(weather)
+            RecyclerWeatherListFragmentBinding.bind(itemView).apply {
+                tvCityName.text = weather.city.name
+                root.setOnClickListener{
+                    onItemListClickListener.onitemClik(weather)
+                }
             }
         }
 
-        }
+   }
+
     }
 
 

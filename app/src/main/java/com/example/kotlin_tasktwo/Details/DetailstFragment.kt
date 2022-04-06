@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import com.example.kotlin_tasktwo.R
 import com.example.kotlin_tasktwo.Repository.Weather
 import com.example.kotlin_tasktwo.databinding.DetailsFragmentBinding
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.details_fragment.*
 
 
 class DetailstFragment : Fragment() {
@@ -24,19 +26,29 @@ class DetailstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view,savedInstanceState)
-        val weather = arguments?.getParcelable<Weather>(BUNDLE_WEATHER)
-        if (weather != null) {
-            val city = weather.city
+       arguments?.getParcelable<Weather>(BUNDLE_WEATHER)?.let {
+               weather -> weather.city.also { city ->
             binding.cityName.text = city.name
             binding.cityCoordinates.text = String.format(
                 getString(R.string.city_coordinates),
                 city.lat.toString(),
-                city.lon.toString()
+                city.lon.toString(),
+                mainView.showSnackBar("Работает",2500)
+
             )
             binding.temperatureValue.text = weather.temperature.toString()
             binding.feelsLikeValue.text = weather.feelsLike.toString()
-        }
+       }
+    }
 
+    }
+
+// extension-функция
+    private fun View.showSnackBar(
+        text: String,
+        length: Int = Snackbar.LENGTH_INDEFINITE
+    ) {
+        Snackbar.make(this, text,  length).show()
     }
 
     companion object {
