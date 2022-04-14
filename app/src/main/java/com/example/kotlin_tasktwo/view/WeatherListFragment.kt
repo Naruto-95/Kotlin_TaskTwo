@@ -12,8 +12,6 @@ import com.example.kotlin_tasktwo.Repository.Weather
 import com.example.kotlin_tasktwo.databinding.WeatherListFragmentBinding
 import com.example.kotlin_tasktwo.viewmodel.AppState
 import com.example.kotlin_tasktwo.viewmodel.MainViewModel
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.details_fragment.*
 import android.view.View as View
 
 
