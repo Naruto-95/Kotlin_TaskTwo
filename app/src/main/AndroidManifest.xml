@@ -11,7 +11,7 @@
         android:theme="@style/Theme.Kotlin_TaskTwo">
 
         <activity
-            android:name=".view.main.MainActivityWebView"
+            android:name=".view.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
