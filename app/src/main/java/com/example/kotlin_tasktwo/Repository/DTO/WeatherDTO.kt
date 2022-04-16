@@ -1,10 +1,9 @@
 package com.example.kotlin_tasktwo.Repository.DTO
 
-
 data class WeatherDTO(
-    val factDTO: FactDTO,
-    val forecastDTO: ForecastDTO,
-    val infoDTO: InfoDTO,
+    val fact: Fact,
+    val forecast: Forecast,
+    val info: Info,
     val now: Int,
     val now_dt: String
 )
