@@ -8,14 +8,18 @@ import androidx.fragment.app.Fragment
 import com.example.kotlin_tasktwo.R
 import com.example.kotlin_tasktwo.Repository.DTO.WeatherDTO
 import com.example.kotlin_tasktwo.Repository.LoaderWeather
+import com.example.kotlin_tasktwo.Repository.OnErrorListener
 import com.example.kotlin_tasktwo.Repository.OnServerResponse
 import com.example.kotlin_tasktwo.Repository.Weather
 import com.example.kotlin_tasktwo.databinding.DetailsFragmentBinding
+import com.example.kotlin_tasktwo.viewmodel.AppState
+import com.example.kotlin_tasktwo.viewmodel.AppStateError
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.details_fragment.*
+
+
 //2:39
 
-class DetailstFragment : Fragment(),OnServerResponse {
+class DetailstFragment : Fragment(),OnServerResponse, OnErrorListener {
 
     private lateinit var binding: DetailsFragmentBinding
 
@@ -29,9 +33,13 @@ class DetailstFragment : Fragment(),OnServerResponse {
 lateinit var currentCityName:String
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view,savedInstanceState)
+        val observer = {appStateError: AppStateError -> Errorr(appStateError) }
+        OnErrorListener(observer)
        arguments?.getParcelable<Weather>(BUNDLE_WEATHER)?.let {
            currentCityName = it.city.name
-           LoaderWeather(this ).LoadWeather(it.city.lat,it.city.lon)
+           LoaderWeather(this@DetailstFragment,this@DetailstFragment )
+               .LoadWeather(it.city.lat, it.city.lon)
+
        }
 
     }
@@ -42,18 +50,16 @@ lateinit var currentCityName:String
            cityCoordinates.text = String.format(getString(R.string.city_coordinates),
                weather.info.lat.toString(),
                weather.info.lon.toString(),
-               mainView.showSnackBar("Работает",2500)
+               mainView.showSnackBar("Работает",2000))
 
-           )
            temperatureValue.text = weather.fact.temperature.toString()
            feelsLikeValue.text = weather.fact.feelsLike.toString()
        }
        }
 
 
-
 // extension-функция
-    private fun View.showSnackBar(
+   private fun View.showSnackBar(
         text: String,
         length: Int = Snackbar.LENGTH_INDEFINITE
     ) {
@@ -70,11 +76,33 @@ lateinit var currentCityName:String
 
     }
 
-    override fun onResponse(weatherDTO: WeatherDTO) {
-        renderData(weatherDTO)
+    override fun onResponse(weather: WeatherDTO) {
+        renderData(weather)
     }
 
+fun Errorr(data: AppStateError)=when (data) {
+
+    is AppStateError.ErrorSrv -> {
+        binding.loadingLayout.visibility = View.GONE
+        Snackbar.make(binding.root, " Сервер не отвечает", Snackbar.LENGTH_LONG).show()
+    }
+
+    is AppStateError.ErrorCl -> {
+        Snackbar.make(binding.root, " Что то случилось ", Snackbar.LENGTH_LONG).show()
+        binding.loadingLayout.visibility = View.GONE
+
+    }
 }
+
+    override fun onError(appStateError: AppStateError) =
+        Errorr(appStateError)
+}
+
+
+
+
+
+
 
 
 
