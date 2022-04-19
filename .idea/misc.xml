@@ -4,18 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.126" />
+        <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/drawable/da.xml" value="0.146" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.126" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/drawable/ic_launcherER_background.xml" value="0.126" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/drawable/ic_launcherRus_background.xml" value="0.102" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.109" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/drawable/ic_rus.xml" value="0.102" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/drawable/ic_russia.xml" value="0.1" />
+        <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/drawable/ic_theard.xml" value="0.146" />
+        <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/drawable/ic_twotone.xml" value="0.1" />
+        <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/drawable/ic_twotone_desktop_windows_24.xml" value="0.1435" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/layout/details_fragment.xml" value="0.1" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/layout/main_activity.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/layout/main_activity_webview.xml" value="0.1" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/layout/main_fragment.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/layout/recycler_weather_list_fragment.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/layout/theard_fragment.xml" value="0.18659420289855072" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/layout/weather_list_fragment.xml" value="0.22357723577235772" />
+        <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/menu/menu_thread.xml" value="0.25" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.126" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.126" />
         <entry key="..\:/Users/lenovo/Kotlin_TaskTwo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_roundrus.xml" value="0.126" />
