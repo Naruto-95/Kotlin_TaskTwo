@@ -10,4 +10,5 @@
     <dimen name="maxSizeBtn">56dp</dimen>
     <dimen name="MangBtn">20dp</dimen>
     <dimen name="TextSizeCity">35sp</dimen>
+    <dimen name="pro">20sp</dimen>
 </resources>
