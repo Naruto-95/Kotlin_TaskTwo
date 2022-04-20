@@ -13,6 +13,7 @@ import com.example.kotlin_tasktwo.R
 import com.example.kotlin_tasktwo.utils.KAY_SERVICE
 import com.example.kotlin_tasktwo.utils.WAVE_MY_ACTION
 import com.example.kotlin_tasktwo.view.WeatherListFragment
+//3:17
 
 class MainActivity : AppCompatActivity() {
 

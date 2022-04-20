@@ -21,6 +21,14 @@
             </intent-filter>
         </activity>
         <service android:name=".Lesson_6.Service" />
+        <service android:name=".Details.DetalisService"/>
+        <receiver
+            android:name=".Lesson_6.MyBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="MyAction" />
+            </intent-filter>
+        </receiver>
     </application>
 
 

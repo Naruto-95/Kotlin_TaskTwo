@@ -1,7 +1,10 @@
 package com.example.kotlin_tasktwo.Repository.DTO
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Forecast (
     @SerializedName("date")
     val date: String,
@@ -19,4 +22,4 @@ data class Forecast (
     val sunset: String,
     @SerializedName("week")
     val week: Int
-)
+):Parcelable
