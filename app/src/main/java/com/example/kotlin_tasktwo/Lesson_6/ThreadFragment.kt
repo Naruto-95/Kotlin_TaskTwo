@@ -59,7 +59,7 @@ class ThreadFragment : Fragment() {
                 }.start()
 
             }
-
+                //2 00
           BtnLong.setOnClickListener{
               val long = edTeLong.text.toString().toLong()
               myThread.mHandler?.post {
