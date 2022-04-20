@@ -1,14 +1,17 @@
 package com.example.kotlin_tasktwo.view.main
 
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlin_tasktwo.Lesson_6.MyBroadcastReceiver
 import com.example.kotlin_tasktwo.Lesson_6.Service
 import com.example.kotlin_tasktwo.Lesson_6.ThreadFragment
 import com.example.kotlin_tasktwo.R
+import com.example.kotlin_tasktwo.utils.KAY_SERVICE
+import com.example.kotlin_tasktwo.utils.WAVE_MY_ACTION
 import com.example.kotlin_tasktwo.view.WeatherListFragment
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +25,15 @@ class MainActivity : AppCompatActivity() {
                 .commitNow()
         }
 
-startService(Intent(this,Service::class.java))
+startService(Intent(this,Service::class.java).apply {
+    putExtra(KAY_SERVICE,"Hello,Service")
+})
+
+        val receiver = MyBroadcastReceiver()
+        registerReceiver(receiver, IntentFilter(WAVE_MY_ACTION))//Глобальный
+       // LocalBroadcastManager.getInstance(this )
+    // .registerReceiver(receiver,IntentFilter("MyAction"))//Локальный
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
