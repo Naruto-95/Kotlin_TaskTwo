@@ -10,7 +10,8 @@ import com.example.kotlin_tasktwo.Lesson_6.MyBroadcastReceiver
 import com.example.kotlin_tasktwo.Lesson_6.Service
 import com.example.kotlin_tasktwo.Lesson_6.ThreadFragment
 import com.example.kotlin_tasktwo.R
-import com.example.kotlin_tasktwo.utils.KAY_SERVICE
+
+import com.example.kotlin_tasktwo.utils.KEY_SERVICE
 import com.example.kotlin_tasktwo.utils.WAVE_MY_ACTION
 import com.example.kotlin_tasktwo.view.WeatherListFragment
 //3:17
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 startService(Intent(this,Service::class.java).apply {
-    putExtra(KAY_SERVICE,"Hello,Service")
+    putExtra(KEY_SERVICE,"Hello,Service")
 })
 
         val receiver = MyBroadcastReceiver()

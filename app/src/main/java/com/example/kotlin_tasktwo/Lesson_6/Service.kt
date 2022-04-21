@@ -10,11 +10,11 @@ class Service(val name: String = ""): IntentService(name) {
     override fun onHandleIntent(intent: Intent?) {
         Log.d("@@@","Service")
         intent?.let {
-            val ex = it.getStringExtra(KAY_SERVICE)
+            val ex = it.getStringExtra(KEY_SERVICE)
             Log.d("@@@","Service $ex ")
             sleep(SLEEP_SERVICE)
             val message = Intent(WAVE_MY_ACTION)
-            message.putExtra(KAY_RECEIVER,"Hello,Activity")
+            message.putExtra(KEY_RECEIVER,"Hello,Activity")
             sendBroadcast(message)
         }
         }

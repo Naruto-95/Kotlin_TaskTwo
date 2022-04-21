@@ -17,17 +17,17 @@ class DetalisService (val name: String = ""): IntentService(name) {
     override fun onHandleIntent(intent: Intent?) {
         Log.d("@@@","DetalisService")
         intent?.let {
-            val lat= it.getDoubleExtra(KAY_BUN_LAT,0.0)
-            val lon = it.getDoubleExtra(KAY_BUN_LON,0.0)
+            val lat= it.getDoubleExtra(KEY_BUN_LAT,0.0)
+            val lon = it.getDoubleExtra(KEY_BUN_LON,0.0)
             Log.d("@@@","DetalisService $lat $lon ")
 
-            val urlText = "$KAY_YANDEX_DOMEN${KAY_YANDEX}lat=$lat&lon=$lon"
+            val urlText = "$KEY_YANDEX_DOMEN${KEY_YANDEX}lat=$lat&lon=$lon"
             val uri = URL(urlText)
             val urlConnection: HttpsURLConnection =
                 (uri.openConnection() as HttpsURLConnection).apply {
                     connectTimeout = 1000
                     readTimeout = 1000
-                    addRequestProperty(KAY_YANDEX_API, BuildConfig.WEATHER_API_KEY)
+                    addRequestProperty(KEY_YANDEX_API, BuildConfig.WEATHER_API_KEY)
                 }
 
 
@@ -36,8 +36,8 @@ class DetalisService (val name: String = ""): IntentService(name) {
                     val responseCode = urlConnection.responseCode
             val buffer = BufferedReader(InputStreamReader(urlConnection.inputStream))
             val weatherDTO: WeatherDTO = Gson().fromJson(buffer, WeatherDTO::class.java)
-            val message = Intent(KYA_WEATHER_WAVE)
-            message.putExtra(KYA_WEATHER,weatherDTO)
+            val message = Intent(KEY_WEATHER_WAVE)
+            message.putExtra(KEY_WEATHER,weatherDTO)
             //sendBroadcast(message)
             LocalBroadcastManager.getInstance(this).sendBroadcast(message)
 

@@ -4,9 +4,9 @@ import android.os.Handler
 import android.os.Looper
 import com.example.kotlin_tasktwo.BuildConfig
 import com.example.kotlin_tasktwo.Repository.DTO.WeatherDTO
-import com.example.kotlin_tasktwo.utils.KAY_YANDEX
-import com.example.kotlin_tasktwo.utils.KAY_YANDEX_API
-import com.example.kotlin_tasktwo.utils.KAY_YANDEX_DOMEN
+import com.example.kotlin_tasktwo.utils.KEY_YANDEX
+import com.example.kotlin_tasktwo.utils.KEY_YANDEX_API
+import com.example.kotlin_tasktwo.utils.KEY_YANDEX_DOMEN
 import com.example.kotlin_tasktwo.viewmodel.AppStateError
 import com.google.gson.Gson
 import java.io.BufferedReader
@@ -22,14 +22,14 @@ class LoaderWeather (private val onServerResponseListener:OnServerResponse,
     fun LoadWeather(lat: Double, lon: Double) {
 
 //3 17
-        val urlText = "$KAY_YANDEX_DOMEN${KAY_YANDEX}lat=$lat&lon=$lon"
+        val urlText = "$KEY_YANDEX_DOMEN${KEY_YANDEX}lat=$lat&lon=$lon"
         //val urlText = "http://212.86.114.27/v2/informers?lat=$lat&lon=$lon"
         val uri = URL(urlText)
         val urlConnection: HttpURLConnection =
             (uri.openConnection() as HttpURLConnection).apply {
                 connectTimeout = 1000
                 readTimeout = 1000
-               addRequestProperty(KAY_YANDEX_API, BuildConfig.WEATHER_API_KEY)
+               addRequestProperty(KEY_YANDEX_API, BuildConfig.WEATHER_API_KEY)
             }
 
         try {

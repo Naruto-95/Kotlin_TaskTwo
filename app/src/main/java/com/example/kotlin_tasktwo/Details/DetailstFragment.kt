@@ -1,6 +1,5 @@
 package com.example.kotlin_tasktwo.Details
 
-import android.app.AlertDialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -9,7 +8,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.kotlin_tasktwo.R
@@ -19,10 +17,8 @@ import com.example.kotlin_tasktwo.Repository.OnErrorListener
 import com.example.kotlin_tasktwo.Repository.OnServerResponse
 import com.example.kotlin_tasktwo.Repository.Weather
 import com.example.kotlin_tasktwo.databinding.DetailsFragmentBinding
-import com.example.kotlin_tasktwo.utils.KAY_BUN_LAT
-import com.example.kotlin_tasktwo.utils.KAY_BUN_LON
-import com.example.kotlin_tasktwo.utils.KYA_WEATHER
-import com.example.kotlin_tasktwo.utils.KYA_WEATHER_WAVE
+import com.example.kotlin_tasktwo.utils.KEY_WEATHER
+import com.example.kotlin_tasktwo.utils.KEY_WEATHER_WAVE
 import com.example.kotlin_tasktwo.viewmodel.AppStateError
 import com.google.android.material.snackbar.Snackbar
 
@@ -41,7 +37,7 @@ class DetailstFragment : Fragment(),OnServerResponse, OnErrorListener {
     val receiver  = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             intent?.let { intent ->
-                intent.getParcelableExtra<WeatherDTO>(KYA_WEATHER)?.let {
+                intent.getParcelableExtra<WeatherDTO>(KEY_WEATHER)?.let {
                     onResponse(it)
                 }
 
@@ -73,7 +69,7 @@ lateinit var currentCityName:String
 
 
         LocalBroadcastManager.getInstance(requireContext() )
-         .registerReceiver(receiver,IntentFilter(KYA_WEATHER_WAVE))
+         .registerReceiver(receiver,IntentFilter(KEY_WEATHER_WAVE))
         val observer = {appStateError: AppStateError -> Errorr(appStateError) }
         OnErrorListener(observer)
        arguments?.getParcelable<Weather>(BUNDLE_WEATHER)?.let {
