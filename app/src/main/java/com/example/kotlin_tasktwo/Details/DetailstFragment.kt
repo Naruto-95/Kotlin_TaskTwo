@@ -1,5 +1,6 @@
 package com.example.kotlin_tasktwo.Details
 
+import android.app.AlertDialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -8,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.kotlin_tasktwo.R
@@ -127,19 +129,24 @@ lateinit var currentCityName:String
         renderData(weather)
     }
 
+
+
 fun Errorr(data: AppStateError)=when (data) {
 
     is AppStateError.ErrorSrv -> {
         binding.loadingLayout.visibility = View.GONE
         Snackbar.make(binding.root, " Сервер не отвечает", Snackbar.LENGTH_LONG).show()
+
     }
 
     is AppStateError.ErrorCl -> {
-        Snackbar.make(binding.root, " Что то случилось ", Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root, " Что-то случилось ", Snackbar.LENGTH_LONG).show()
         binding.loadingLayout.visibility = View.GONE
 
     }
-    else -> {}
+    else -> {
+
+    }
 }
 
 

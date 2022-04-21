@@ -12,8 +12,8 @@ import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
+import java.net.SocketTimeoutException
 import java.net.URL
-import javax.net.ssl.HttpsURLConnection
 
 class LoaderWeather (private val onServerResponseListener:OnServerResponse,
                      private val onErrorListener:OnErrorListener) {
@@ -21,11 +21,12 @@ class LoaderWeather (private val onServerResponseListener:OnServerResponse,
 
     fun LoadWeather(lat: Double, lon: Double) {
 
-
+//3 17
         val urlText = "$KAY_YANDEX_DOMEN${KAY_YANDEX}lat=$lat&lon=$lon"
+        //val urlText = "http://212.86.114.27/v2/informers?lat=$lat&lon=$lon"
         val uri = URL(urlText)
-        val urlConnection: HttpsURLConnection =
-            (uri.openConnection() as HttpsURLConnection).apply {
+        val urlConnection: HttpURLConnection =
+            (uri.openConnection() as HttpURLConnection).apply {
                 connectTimeout = 1000
                 readTimeout = 1000
                addRequestProperty(KAY_YANDEX_API, BuildConfig.WEATHER_API_KEY)
@@ -40,7 +41,7 @@ class LoaderWeather (private val onServerResponseListener:OnServerResponse,
                 val responseOkey = 200..299
                 when (responseCode) {
                     in serverSaid -> {
-                    onErrorListener.onError(AppStateError.ErrorSrv(IllegalAccessException()))
+                    onErrorListener.onError(AppStateError.ErrorSrv(SocketTimeoutException()))
                     }
                     in clientSaid -> {
                         onErrorListener.onError(AppStateError.ErrorCl(IllegalAccessException()))
@@ -48,7 +49,7 @@ class LoaderWeather (private val onServerResponseListener:OnServerResponse,
                     in responseOkey -> {
                         val buffer = BufferedReader(InputStreamReader(urlConnection.inputStream))
                        val weatherDTO: WeatherDTO = Gson().fromJson(buffer, WeatherDTO::class.java)
-                      Handler(Looper.getMainLooper()).post {
+                     Handler(Looper.getMainLooper()).post {
                            onServerResponseListener.onResponse(weatherDTO)
                        }
                     }
