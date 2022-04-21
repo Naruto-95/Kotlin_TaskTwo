@@ -2,7 +2,6 @@ package com.example.kotlin_tasktwo.Repository
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import com.example.kotlin_tasktwo.BuildConfig
 import com.example.kotlin_tasktwo.Repository.DTO.WeatherDTO
 import com.example.kotlin_tasktwo.utils.KAY_YANDEX
@@ -12,6 +11,7 @@ import com.example.kotlin_tasktwo.viewmodel.AppStateError
 import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.net.HttpURLConnection
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
@@ -28,7 +28,7 @@ class LoaderWeather (private val onServerResponseListener:OnServerResponse,
             (uri.openConnection() as HttpsURLConnection).apply {
                 connectTimeout = 1000
                 readTimeout = 1000
-                addRequestProperty(KAY_YANDEX_API, BuildConfig.WEATHER_API_KEY)
+               addRequestProperty(KAY_YANDEX_API, BuildConfig.WEATHER_API_KEY)
             }
 
         try {
@@ -40,10 +40,10 @@ class LoaderWeather (private val onServerResponseListener:OnServerResponse,
                 val responseOkey = 200..299
                 when (responseCode) {
                     in serverSaid -> {
-                    onErrorListener.onError(AppStateError.ErrorSrv)
+                    onErrorListener.onError(AppStateError.ErrorSrv(IllegalAccessException()))
                     }
                     in clientSaid -> {
-                        onErrorListener.onError(AppStateError.ErrorCl)
+                        onErrorListener.onError(AppStateError.ErrorCl(IllegalAccessException()))
                     }
                     in responseOkey -> {
                         val buffer = BufferedReader(InputStreamReader(urlConnection.inputStream))
@@ -57,7 +57,7 @@ class LoaderWeather (private val onServerResponseListener:OnServerResponse,
 
         } catch (e: Exception) {
             e.printStackTrace()
-            onErrorListener.onError(AppStateError.ErrorCl)
+            onErrorListener.onError(AppStateError.ErrorCl(IllegalAccessException()))
         }  finally {
             urlConnection.disconnect()
         }

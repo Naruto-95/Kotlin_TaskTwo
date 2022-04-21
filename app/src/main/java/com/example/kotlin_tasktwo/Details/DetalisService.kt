@@ -2,16 +2,12 @@ package com.example.kotlin_tasktwo.Details
 
 import android.app.IntentService
 import android.content.Intent
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.kotlin_tasktwo.BuildConfig
 import com.example.kotlin_tasktwo.Repository.DTO.WeatherDTO
 import com.example.kotlin_tasktwo.utils.*
-import com.example.kotlin_tasktwo.viewmodel.AppStateError
 import com.google.gson.Gson
-import kotlinx.android.parcel.Parcelize
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL

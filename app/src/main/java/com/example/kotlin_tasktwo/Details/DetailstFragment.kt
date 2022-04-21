@@ -12,12 +12,15 @@ import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.kotlin_tasktwo.R
 import com.example.kotlin_tasktwo.Repository.DTO.WeatherDTO
+import com.example.kotlin_tasktwo.Repository.LoaderWeather
 import com.example.kotlin_tasktwo.Repository.OnErrorListener
 import com.example.kotlin_tasktwo.Repository.OnServerResponse
 import com.example.kotlin_tasktwo.Repository.Weather
 import com.example.kotlin_tasktwo.databinding.DetailsFragmentBinding
-import com.example.kotlin_tasktwo.databinding.TheardFragmentBinding
-import com.example.kotlin_tasktwo.utils.*
+import com.example.kotlin_tasktwo.utils.KAY_BUN_LAT
+import com.example.kotlin_tasktwo.utils.KAY_BUN_LON
+import com.example.kotlin_tasktwo.utils.KYA_WEATHER
+import com.example.kotlin_tasktwo.utils.KYA_WEATHER_WAVE
 import com.example.kotlin_tasktwo.viewmodel.AppStateError
 import com.google.android.material.snackbar.Snackbar
 
@@ -31,6 +34,20 @@ class DetailstFragment : Fragment(),OnServerResponse, OnErrorListener {
         get(){
             return _binding!!
         }
+
+    //Создал на месте ресивер
+    val receiver  = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            intent?.let { intent ->
+                intent.getParcelableExtra<WeatherDTO>(KYA_WEATHER)?.let {
+                    onResponse(it)
+                }
+
+            }
+
+        }
+
+    }
 
 
     override fun onDestroy() {
@@ -52,18 +69,19 @@ lateinit var currentCityName:String
         super.onViewCreated(view,savedInstanceState)
 
 
+
         LocalBroadcastManager.getInstance(requireContext() )
          .registerReceiver(receiver,IntentFilter(KYA_WEATHER_WAVE))
         val observer = {appStateError: AppStateError -> Errorr(appStateError) }
         OnErrorListener(observer)
        arguments?.getParcelable<Weather>(BUNDLE_WEATHER)?.let {
            currentCityName = it.city.name
-           //LoaderWeather(this@DetailstFragment,this@DetailstFragment )
-            //   .LoadWeather(it.city.lat, it.city.lon)
-           requireActivity().startService(Intent(requireContext(),DetalisService::class.java).apply {
-               putExtra(KAY_BUN_LAT,it.city.lat)
-               putExtra(KAY_BUN_LON, it.city.lon )
-           })
+           LoaderWeather(this@DetailstFragment,this@DetailstFragment )
+              .LoadWeather(it.city.lat, it.city.lon)
+           // requireActivity().startService(Intent(requireContext(),DetalisService::class.java).apply {
+           //  putExtra(KAY_BUN_LAT,it.city.lat)
+           //  putExtra(KAY_BUN_LON, it.city.lon )
+           //   })
 
 
 
@@ -71,7 +89,9 @@ lateinit var currentCityName:String
 
     }
 
-   private fun renderData(weather: WeatherDTO){
+
+
+    private fun renderData(weather: WeatherDTO){
        with(binding){
            cityName.text = currentCityName
            cityCoordinates.text = String.format(getString(R.string.city_coordinates),
@@ -121,17 +141,7 @@ fun Errorr(data: AppStateError)=when (data) {
     }
     else -> {}
 }
-    //Создал на месте ресивер
-    val receiver  = object :BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            intent?.let { intent ->
-                intent.getParcelableExtra<WeatherDTO>(KYA_WEATHER)?.let {
-                    onResponse(it)
-                }
 
-            }
-        }
-        }
 
     override fun onError(appStateError: AppStateError) {
         Errorr(appStateError)
