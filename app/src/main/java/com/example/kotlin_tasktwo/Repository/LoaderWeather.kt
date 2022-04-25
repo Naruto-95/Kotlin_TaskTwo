@@ -15,8 +15,10 @@ import java.net.HttpURLConnection
 import java.net.SocketTimeoutException
 import java.net.URL
 
-class LoaderWeather (private val onServerResponseListener:OnServerResponse,
-                     private val onErrorListener:OnErrorListener) {
+class LoaderWeather(
+    private val onServerResponseListener: OnServerResponse,
+    private val onErrorListener: OnErrorListener
+) {
 
 
     fun LoadWeather(lat: Double, lon: Double) {
@@ -29,11 +31,12 @@ class LoaderWeather (private val onServerResponseListener:OnServerResponse,
             (uri.openConnection() as HttpURLConnection).apply {
                 connectTimeout = 1000
                 readTimeout = 1000
-               addRequestProperty(KEY_YANDEX_API, BuildConfig.WEATHER_API_KEY)
+                addRequestProperty(KEY_YANDEX_API, BuildConfig.WEATHER_API_KEY)
             }
 
-        try {
-            Thread {
+
+        Thread {
+            try {
                 val hareds = urlConnection.headerFields
                 val responseCode = urlConnection.responseCode
                 val serverSaid = 500..599
@@ -41,32 +44,30 @@ class LoaderWeather (private val onServerResponseListener:OnServerResponse,
                 val responseOkey = 200..299
                 when (responseCode) {
                     in serverSaid -> {
-                    onErrorListener.onError(AppStateError.ErrorSrv(SocketTimeoutException()))
+                        onErrorListener.onError(AppStateError.ErrorSrv(SocketTimeoutException()))
                     }
                     in clientSaid -> {
                         onErrorListener.onError(AppStateError.ErrorCl(IllegalAccessException()))
                     }
                     in responseOkey -> {
                         val buffer = BufferedReader(InputStreamReader(urlConnection.inputStream))
-                       val weatherDTO: WeatherDTO = Gson().fromJson(buffer, WeatherDTO::class.java)
-                     Handler(Looper.getMainLooper()).post {
-                           onServerResponseListener.onResponse(weatherDTO)
-                       }
+                        val weatherDTO: WeatherDTO = Gson().fromJson(buffer, WeatherDTO::class.java)
+                        Handler(Looper.getMainLooper()).post {
+                            onServerResponseListener.onResponse(weatherDTO)
+                        }
                     }
                 }
-            }.start()
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-            onErrorListener.onError(AppStateError.ErrorCl(IllegalAccessException()))
-        }  finally {
-            urlConnection.disconnect()
-        }
-               }
-
+            } catch (e: Exception) {
+                e.printStackTrace()
+                onErrorListener.onError(AppStateError.ErrorCl(IllegalAccessException()))
+            } finally {
+                urlConnection.disconnect()
+            }
+        }.start()
 
 
     }
+}
 
 
 

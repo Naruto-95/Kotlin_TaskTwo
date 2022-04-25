@@ -11,3 +11,4 @@ data class WeatherDTO(
     val now: Int,
     val now_dt: String
 ):Parcelable
+
