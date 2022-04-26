@@ -1,5 +1,6 @@
 package com.example.kotlin_tasktwo.Details
 
+
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.load
-
-
 import com.example.kotlin_tasktwo.Lesson_7.repository.viewmodelOkhttp_Retrofit.DetailstState
 import com.example.kotlin_tasktwo.Lesson_7.repository.viewmodelOkhttp_Retrofit.DetailstViewModel
 import com.example.kotlin_tasktwo.R
@@ -50,7 +49,7 @@ class DetailstFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        //LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(receiver)
+        // LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(receiver)
     }
 
     private val viewModel: DetailstViewModel by lazy {
@@ -76,7 +75,7 @@ class DetailstFragment : Fragment() {
 
         })
         //val observer = { appStateError: AppStateError -> Errorr(appStateError) }
-      //  OnErrorListener(observer)
+        //  OnErrorListener(observer)
         arguments?.getParcelable<Weather>(BUNDLE_WEATHER)?.let {
             //currentCityName = it.city.name
             viewModel.getWeather(it.city)
@@ -146,11 +145,11 @@ requireActivity().runOnUiThread{
         is DetailstState.Error -> {
             with(binding) {
                 loadingLayout.visibility = View.GONE
-                Snackbar.make(mainView,"wwww",Snackbar.LENGTH_LONG).show()
+                Snackbar.make(mainView, "wwww", Snackbar.LENGTH_LONG).show()
 
-                   // onFail(DetailstState.Error( IllegalAccessException()))
-               // mainView.showSnackBar("yt",5000)
-            //DetailstState.Error(Throwable(ERROR_SERVER)).toString()
+                // onFail(DetailstState.Error( IllegalAccessException()))
+                // mainView.showSnackBar("yt",5000)
+                //DetailstState.Error(Throwable(ERROR_SERVER)).toString()
 
             }
 
@@ -240,17 +239,15 @@ requireActivity().runOnUiThread{
 
         }
 
-       /* is AppStateError.ErrorCl -> {
-            Snackbar.make(binding.root, " Что-то случилось ", Snackbar.LENGTH_LONG).show()
-            binding.loadingLayout.visibility = View.GONE
+        /* is AppStateError.ErrorCl -> {
+             Snackbar.make(binding.root, " Что-то случилось ", Snackbar.LENGTH_LONG).show()
+             binding.loadingLayout.visibility = View.GONE
 
-        }*/
+         }*/
         else -> {
 
         }
     }
-
-
 
 
 //override fun onError(appStateError: AppStateError) {
