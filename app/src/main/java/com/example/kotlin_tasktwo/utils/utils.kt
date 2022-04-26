@@ -25,6 +25,9 @@ const val KEY_BUN_LON = "lon"
 const val KEY_WEATHER = "weather"
 const val KEY_WEATHER_WAVE = "weather_wave"
 
+const val KEY_SETTINGS = "settings"
+const val KEY_RUSSIAN = "isRussian "
+
 //слипы сервеса
 const val SLEEP_SERVICE = 1000L
 
