@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/marginText"
     android:orientation="vertical">
-    
- <androidx.appcompat.widget.AppCompatTextView
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:textSize="@dimen/sizeText"
-     android:id="@+id/tvCityName"/>
-    
-    <View
-        android:background="@color/black"
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCityName"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/Pod_city"/>
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sizeText" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/Pod_city"
+        android:background="@color/black" />
 </LinearLayout>

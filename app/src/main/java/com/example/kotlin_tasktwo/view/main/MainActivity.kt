@@ -17,6 +17,7 @@ import com.example.kotlin_tasktwo.utils.KEY_SERVICE
 import com.example.kotlin_tasktwo.utils.KEY_SETTINGS
 import com.example.kotlin_tasktwo.utils.WAVE_MY_ACTION
 import com.example.kotlin_tasktwo.view.WeatherListFragment
+import domain.room.room.view_History.HistoryWeatherListFragment
 
 //3:17
 
@@ -67,6 +68,13 @@ class MainActivity : AppCompatActivity() {
             R.id.menuTheard -> {
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.container, ThreadFragment.newInstance())
+                    .addToBackStack("")
+                    .commit()
+
+            }
+            R.id.menuHistory -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, HistoryWeatherListFragment.newInstance())
                     .addToBackStack("")
                     .commit()
 

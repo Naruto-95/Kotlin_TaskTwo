@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.room.Room
 import domain.room.room.DataBase
 import domain.room.room.HistoryDao
-import domain.room.room.HistoryMyApplication
 
 
 class MyApp : Application() {
@@ -17,8 +16,6 @@ class MyApp : Application() {
     companion object {
         var db: DataBase? = null
         var appContext: MyApp? = null
-
-
         fun getHistoryDao(): HistoryDao {
             if (null == db) {
                 if (null != appContext) {

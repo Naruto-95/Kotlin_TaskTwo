@@ -7,13 +7,15 @@ import com.example.kotlin_tasktwo.Lesson_7.repository.DetailstRepositoryReteofit
 import com.example.kotlin_tasktwo.Repository.City
 import com.example.kotlin_tasktwo.Repository.Weather
 import com.example.kotlin_tasktwo.utils.ERROR_SERVER
-import com.example.kotlin_tasktwo.viewmodel.AppStateError
+import domain.room.room.repository_history.RepositoryHistoryAdd
+import domain.room.room.repository_history.RepositoryHistoryRoomImp
 
 
 class DetailstViewModel(
     private val liveData: MutableLiveData<DetailstState> = MutableLiveData(),
     //  private val repository: DetailstRepository = DetailstRepositoryOKHttpImpl(),
-    private val repository: DetailstRepository = DetailstRepositoryReteofitImpl()
+    private val repository: DetailstRepository = DetailstRepositoryReteofitImpl(),
+            private val repositoryAdd: RepositoryHistoryAdd = RepositoryHistoryRoomImp()
 ) : ViewModel() {
 
     fun getliveData() = liveData
@@ -33,6 +35,7 @@ class DetailstViewModel(
         repository.getWeatherDetailst(city, object : Callbak {
             override fun onResponse(weather: Weather) {
                 liveData.postValue(DetailstState.Success(weather))
+                repositoryAdd.getAddWeather(weather)
             }
 
             override fun onFail(detailstState: DetailstState) {
