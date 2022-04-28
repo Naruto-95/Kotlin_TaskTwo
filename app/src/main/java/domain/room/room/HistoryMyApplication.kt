@@ -1,9 +1,9 @@
-package domain.room
+package domain.room.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "MyHistory")
 data class HistoryMyApplication(
     @PrimaryKey(autoGenerate = true)
     val id:Long,

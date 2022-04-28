@@ -2,19 +2,20 @@ package com.example.kotlin_tasktwo.Details
 
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.load
 import com.example.kotlin_tasktwo.Lesson_7.repository.viewmodelOkhttp_Retrofit.DetailstState
 import com.example.kotlin_tasktwo.Lesson_7.repository.viewmodelOkhttp_Retrofit.DetailstViewModel
+import com.example.kotlin_tasktwo.MyApp
 import com.example.kotlin_tasktwo.R
 import com.example.kotlin_tasktwo.Repository.Weather
 import com.example.kotlin_tasktwo.databinding.DetailsFragmentBinding
@@ -68,12 +69,11 @@ class DetailstFragment : Fragment() {
     //lateinit var currentCityName: String
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getliveData().observe(viewLifecycleOwner, object : Observer<DetailstState> {
-            override fun onChanged(t: DetailstState) {
-                renderData(t)
-            }
 
-        })
+
+        viewModel.getliveData().observe(
+            viewLifecycleOwner
+        ) { t -> renderData(t) }
         //val observer = { appStateError: AppStateError -> Errorr(appStateError) }
         //  OnErrorListener(observer)
         arguments?.getParcelable<Weather>(BUNDLE_WEATHER)?.let {

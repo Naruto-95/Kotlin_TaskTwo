@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlin_tasktwo.Lesson_6.MyBroadcastReceiver
 import com.example.kotlin_tasktwo.Lesson_6.Service
 import com.example.kotlin_tasktwo.Lesson_6.ThreadFragment
+import com.example.kotlin_tasktwo.MyApp
 import com.example.kotlin_tasktwo.R
 import com.example.kotlin_tasktwo.utils.KEY_RUSSIAN
 import com.example.kotlin_tasktwo.utils.KEY_SERVICE
@@ -45,8 +46,15 @@ class MainActivity : AppCompatActivity() {
         val defaultRussian = true
         mySP.getBoolean(KEY_RUSSIAN, defaultRussian)
 
-    }
 
+
+
+                MyApp.getHistoryDao().getAll()
+
+
+
+
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

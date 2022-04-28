@@ -13,8 +13,7 @@ import java.lang.Thread.sleep
 
 
 class ThreadFragment : Fragment() {
-// занулил  binding пока что здесь
-    //Потом и до проекта доберусь
+
    private var _binding: TheardFragmentBinding? = null
     private val binding: TheardFragmentBinding
     get(){
