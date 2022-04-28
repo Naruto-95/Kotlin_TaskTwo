@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -48,16 +50,31 @@ class MainActivity : AppCompatActivity() {
         mySP.getBoolean(KEY_RUSSIAN, defaultRussian)
 
 
-
-
+        val myThread = MyThread()
+        myThread.start()
+        myThread.mHandler?.post {
+            Handler(Looper.getMainLooper()).post{
                 MyApp.getHistoryDao().getAll()
+            }
+
+        }
+
 
 
 
 
     }
 
+    class MyThread:Thread(){
+        var mHandler: Handler? = null
+        override fun run() {
+            Looper.prepare()
+            mHandler = Handler(Looper.myLooper()!!)
+            Looper.loop()
 
+        }
+
+    }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_thread, menu)
         return super.onCreateOptionsMenu(menu)
