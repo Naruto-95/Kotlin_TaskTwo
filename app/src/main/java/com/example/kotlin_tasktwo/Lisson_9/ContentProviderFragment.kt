@@ -52,7 +52,7 @@ private fun checkPermission(){
     if (ContextCompat.checkSelfPermission(requireContext(),
             Manifest.permission.READ_CONTACTS)
         ==PackageManager.PERMISSION_GRANTED){
-        getContent()
+        getContacts()
     }else if (shouldShowRequestPermissionRationale( Manifest.permission.READ_CONTACTS)){
         explain()
     }else{
@@ -72,7 +72,7 @@ private fun checkPermission(){
 
 
 
-    private fun getContent() {
+    private fun  getContacts() {
         TODO("Not yet implemented")
     }
 
