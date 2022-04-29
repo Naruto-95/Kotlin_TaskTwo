@@ -1,15 +1,14 @@
-package com.example.kotlin_tasktwo.Lesson_6
+package com.example.kotlin_tasktwo.Lisson_9
+import android.Manifest
 import android.annotation.SuppressLint
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.kotlin_tasktwo.databinding.TheardFragmentBinding
-import java.lang.Thread.sleep
 
 
 class ContentProviderFragment : Fragment() {
@@ -48,13 +47,34 @@ class ContentProviderFragment : Fragment() {
 
         }
 
+private fun checkPermission(){
+
+    if (ContextCompat.checkSelfPermission(requireContext(),
+            Manifest.permission.READ_CONTACTS)
+        ==PackageManager.PERMISSION_GRANTED){
+        getContent()
+    }else if (shouldShowRequestPermissionRationale( Manifest.permission.READ_CONTACTS)){
+        explain()
+    }else{
+        mRequestPermission()
+    }
+
+}
+
+
+    private fun explain() {
+
+    }
+
+    private fun mRequestPermission() {
+        TODO("Not yet implemented")
+    }
 
 
 
-
-
-
-
+    private fun getContent() {
+        TODO("Not yet implemented")
+    }
 
 
     companion object {
