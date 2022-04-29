@@ -3,6 +3,7 @@ package com.example.kotlin_tasktwo
 import android.app.Application
 import androidx.annotation.UiThread
 import androidx.room.Room
+import com.example.kotlin_tasktwo.view.main.MainActivity
 import domain.room.room.DataBase
 import domain.room.room.HistoryDao
 
@@ -20,16 +21,19 @@ class MyApp : Application() {
         @UiThread
         fun getHistoryDao(): HistoryDao {
 
-            if (null == db) {
-                if (null != appContext) {
-                    db = Room.databaseBuilder(appContext!!, DataBase::class.java, " 111 ")
-                        //.allowMainThreadQueries()
-                        .build()
-                } else {
-                    throw IllegalStateException(" something went wrong with AppContext ")
-                }
+               if (null == db) {
+                   if (null != appContext) {
 
-            }
+                       db = Room.databaseBuilder(appContext!!, DataBase::class.java, " 111 ")
+                           .allowMainThreadQueries()
+                           .build()
+                   } else {
+                       throw IllegalStateException(" something went wrong with AppContext ")
+                   }
+
+               }
+
+
 
             return db!!.historyDao()
         }

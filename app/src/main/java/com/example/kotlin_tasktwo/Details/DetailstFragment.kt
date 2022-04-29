@@ -138,7 +138,7 @@ requireActivity().runOnUiThread{
 
  */
 //1:25
-    //Uri.parse("https://yastatic.net/weather/i/icons/blueye/color/svg/${it}.svg" ),
+
 
     @SuppressLint("ShowToast")
     private fun renderData(detailstState: DetailstState) = when (detailstState) {

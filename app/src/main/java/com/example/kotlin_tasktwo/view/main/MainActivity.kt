@@ -9,6 +9,7 @@ import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlin_tasktwo.Lesson_6.ContentProviderFragment
 import com.example.kotlin_tasktwo.Lesson_6.MyBroadcastReceiver
 import com.example.kotlin_tasktwo.Lesson_6.Service
 import com.example.kotlin_tasktwo.Lesson_6.ThreadFragment
@@ -49,15 +50,8 @@ class MainActivity : AppCompatActivity() {
         val defaultRussian = true
         mySP.getBoolean(KEY_RUSSIAN, defaultRussian)
 
+        MyApp.getHistoryDao().getAll()
 
-        val myThread = MyThread()
-        myThread.start()
-        myThread.mHandler?.post {
-            Handler(Looper.getMainLooper()).post{
-                MyApp.getHistoryDao().getAll()
-            }
-
-        }
 
 
 
@@ -65,16 +59,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    class MyThread:Thread(){
-        var mHandler: Handler? = null
-        override fun run() {
-            Looper.prepare()
-            mHandler = Handler(Looper.myLooper()!!)
-            Looper.loop()
 
-        }
-
-    }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_thread, menu)
         return super.onCreateOptionsMenu(menu)
@@ -96,6 +81,13 @@ class MainActivity : AppCompatActivity() {
                     .commit()
 
             }
+            R.id.menuContentProvider -> {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, ContentProviderFragment.newInstance())
+                .addToBackStack("")
+                .commit()
+
+        }
 
         }
         return super.onOptionsItemSelected(item)

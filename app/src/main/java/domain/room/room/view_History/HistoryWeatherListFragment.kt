@@ -61,18 +61,13 @@ viewModel.getAll()
 
     private fun renderData(data: AppState) = when (data) {
         is AppState.Success -> {
-           // binding.loadingLayout.visibility = View.GONE
             adapter.setData(data.weatherList)
-//Snackbar.make(binding.root, "Работает", Snackbar.LENGTH_LONG).show()
         }
         AppState.Loading -> {
-          //  binding.loadingLayout.visibility = View.VISIBLE
         }
         is AppState.Error -> {
             Snackbar.make(binding.root, "Не получилось ${data.error}", Snackbar.LENGTH_LONG)
                 .show()
-            //val throwable = data.error
-          //  binding.loadingLayout.visibility = View.GONE
 
         }
 

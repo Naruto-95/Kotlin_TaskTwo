@@ -5,10 +5,15 @@
         android:id="@+id/menuTheard"
         android:title="@string/menu_thread"
         android:icon="@drawable/ic_twotone"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/menuHistory"
         android:title="@string/menu_thread"
         android:icon="@drawable/ic_baseline_history_24"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menuContentProvider"
+        android:title="@string/menu_thread"
+        android:icon="@drawable/ic_baseline_import_contacts_24"
         app:showAsAction="always" />
 </menu>
