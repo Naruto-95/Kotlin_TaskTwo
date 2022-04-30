@@ -12,5 +12,9 @@
     <string name="menu_thread">Menu_Thread</string>
     <string name="_3">3</string>
 
+    <string name="Title">Доступ к контактам </string>
+    <string name="Grantaccess">Предоставить доступ</string>
+    <string name="Nohanks">Нет,спасибо</string>
+    <string name="Message">Вы можете разрешить доступ в настройка приложения.И так же,вы можете переустановить приложение</string>
 
 </resources>
