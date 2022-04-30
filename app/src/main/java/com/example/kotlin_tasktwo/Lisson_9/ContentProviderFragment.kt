@@ -2,11 +2,14 @@ package com.example.kotlin_tasktwo.Lisson_9
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.ContentResolver
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.kotlin_tasktwo.R
@@ -107,7 +110,23 @@ private val REQUEST_CODE = 777
 
 
     private fun  getContacts() {
-       TODO("Not yet implemented")
+      val contentResolver:ContentResolver=requireActivity().contentResolver
+        val cursor = contentResolver.query( ContactsContract.Contacts.CONTENT_URI,
+            null,null,null,ContactsContract.Contacts.DISPLAY_NAME + " ASC ")
+        cursor?.let {
+            for (i in  0 until  it.count){
+                if (cursor.moveToPosition(i)){
+                    val id = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
+                    val name:String = cursor.getString(id)
+                    binding.containerForContacts.addView(TextView(requireContext()).apply {
+                        textSize = 35f
+                        text = name
+
+                    })
+                }
+            }
+        }
+
     }
 
 
