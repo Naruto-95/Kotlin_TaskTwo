@@ -1,7 +1,7 @@
 package domain.convert
 
-import com.example.kotlin_tasktwo.Repository.City
-import com.example.kotlin_tasktwo.Repository.Weather
+import com.example.kotlin_tasktwo.repository.City
+import com.example.kotlin_tasktwo.repository.Weather
 import domain.room.room.HistoryMyApplication
 
 
