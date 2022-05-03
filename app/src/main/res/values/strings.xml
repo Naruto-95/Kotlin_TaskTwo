@@ -10,11 +10,27 @@
     <string name="_0">0</string>
     <string name="_1">1</string>
     <string name="menu_thread">Menu_Thread</string>
-    <string name="_3">3</string>
-
+    <string name="_3" translatable="false">3</string>
     <string name="Title">Доступ к контактам </string>
     <string name="Grantaccess">Предоставить доступ</string>
     <string name="Nohanks">Нет,спасибо</string>
     <string name="Message">Вы можете разрешить доступ в настройка приложения.И так же,вы можете переустановить приложение</string>
+    <string name="dialog_button_close">Закрыть</string>
+    <string name="dialog_title_no_gps">Доступ к геолокации закрыт</string>
+    <string name="dialog_message_no_gps">Разрешите доступ к геолокации, если хотите
+узнать погоду текущего места</string>
+    <string name="dialog_title_gps_turned_off">GPS отключён</string>
+    <string name="dialog_message_last_location_unknown">Местонахождение неизвестно.
+Включите GPS, если хотите получить погоду по текущему адресу</string>
+    <string name="dialog_message_last_known_location">Показана последняя известная
+локация. Включите GPS, если хотите обновить местонахождение</string>
+    <string name="dialog_rationale_title">Доступ к геолокации</string>
+    <string name="dialog_rationale_meaasge">Объяснение</string>
+    <string name="dialog_rationale_give_access">Предоставить доступ</string>
+    <string name="dialog_rationale_decline">Не надо</string>
+    <string name="dialog_address_title">Ваш адрес</string>
+    © geekbrains.ru 3
+    <string name="dialog_address_get_weather">Узнать погоду</string>
+
 
 </resources>

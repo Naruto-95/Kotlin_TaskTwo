@@ -55,7 +55,7 @@ class ContentProviderFragment : Fragment() {
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.CALL_PHONE
-            ) == PackageManager.PERMISSION_GRANTED ||
+            ) == PackageManager.PERMISSION_GRANTED&&
             ContextCompat.checkSelfPermission(
                 requireContext(),Manifest.permission. READ_PHONE_NUMBERS
             ) == PackageManager.PERMISSION_GRANTED
