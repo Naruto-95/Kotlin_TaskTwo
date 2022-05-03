@@ -1,9 +1,15 @@
 package com.example.kotlin_tasktwo.view
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +23,7 @@ import com.example.kotlin_tasktwo.details.DetailstFragment.Companion.BUNDLE_WEAT
 import com.example.kotlin_tasktwo.repository.Weather
 import com.example.kotlin_tasktwo.viewmodel.AppState
 import com.example.kotlin_tasktwo.viewmodel.MainViewModel
+import java.util.Objects.toString
 
 
 class WeatherListFragment : Fragment(), OnItemListClickListiner {
@@ -58,7 +65,7 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
     }
 
 
-    fun checkPermission() {
+    private fun checkPermission() {
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission
@@ -74,8 +81,30 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
         }
     }
 
+    @SuppressLint("MissingPermission")
     private fun getLocation() {
+        context?.let {
+            val locationManedger = it.getSystemService(Context.LOCATION_SERVICE )as LocationManager
+            if (locationManedger.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+                val provaiderGps = locationManedger.getProvider(LocationManager.GPS_PROVIDER)
+                provaiderGps?.let {
+                    locationManedger.requestLocationUpdates(
+                        LocationManager.GPS_PROVIDER,
+                        10000L,
+                        100f,
+                        LocationListener
+                    )
+                }
+            }
+        }
 
+
+    }
+
+    private val LocationListener = object : LocationListener {
+        override fun onLocationChanged( location: Location) {
+           Log.d("@@@",location.toString())
+        }
     }
 
     private fun explain() {
