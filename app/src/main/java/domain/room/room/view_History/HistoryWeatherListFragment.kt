@@ -3,17 +3,13 @@ package domain.room.room.view_History
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.kotlin_tasktwo.Details.DetailstFragment
-import com.example.kotlin_tasktwo.Details.DetailstFragment.Companion.BUNDLE_WEATHER
-import com.example.kotlin_tasktwo.R
-import com.example.kotlin_tasktwo.Repository.Weather
+import com.example.kotlin_tasktwo.MyApp
 import com.example.kotlin_tasktwo.databinding.HistoryWeatherListFragmentBinding
 import com.example.kotlin_tasktwo.viewmodel.AppState
-import com.example.kotlin_tasktwo.viewmodel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
+import domain.convert.convertHistoryEntityToWeather
 import domain.room.room.historyViewmodel.HistoryViewModel
 import android.view.View as View
 
@@ -50,7 +46,6 @@ viewModel.getAll()
 
 
     }
-
 
 
 

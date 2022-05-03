@@ -1,9 +1,9 @@
-package com.example.kotlin_tasktwo.Lesson_7.repository
+package com.example.kotlin_tasktwo.Lesson_7.lesson7
 
 import com.example.kotlin_tasktwo.BuildConfig
-import com.example.kotlin_tasktwo.Lesson_7.repository.viewmodelOkhttp_Retrofit.DetailstViewModel
-import com.example.kotlin_tasktwo.Repository.City
-import com.example.kotlin_tasktwo.Repository.DTO.WeatherDTO
+import com.example.kotlin_tasktwo.Lesson_7.lesson7.viewmodelOkhttp_Retrofit.DetailstViewModel
+import com.example.kotlin_tasktwo.repository.City
+import com.example.kotlin_tasktwo.repository.DTO.WeatherDTO
 import com.example.kotlin_tasktwo.utils.KEY_YANDEX
 import com.example.kotlin_tasktwo.utils.KEY_YANDEX_API
 import com.example.kotlin_tasktwo.utils.KEY_YANDEX_DOMEN
@@ -38,4 +38,6 @@ class DetailstRepositoryOKHttpImpl:DetailstRepository {
 
 
     }
+
+
 }

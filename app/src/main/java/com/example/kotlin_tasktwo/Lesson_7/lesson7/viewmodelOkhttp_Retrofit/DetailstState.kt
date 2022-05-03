@@ -1,6 +1,6 @@
-package com.example.kotlin_tasktwo.Lesson_7.repository.viewmodelOkhttp_Retrofit
+package com.example.kotlin_tasktwo.Lesson_7.lesson7.viewmodelOkhttp_Retrofit
 
-import com.example.kotlin_tasktwo.Repository.Weather
+import com.example.kotlin_tasktwo.repository.Weather
 
 sealed  class DetailstState {
     object Loading : DetailstState()

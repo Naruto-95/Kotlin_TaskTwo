@@ -1,4 +1,4 @@
-package com.example.kotlin_tasktwo.Repository.DTO
+package com.example.kotlin_tasktwo.repository.DTO
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

@@ -2,8 +2,10 @@ package domain.room.room.historyViewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kotlin_tasktwo.Repository.Weather
+import com.example.kotlin_tasktwo.MyApp
+import com.example.kotlin_tasktwo.repository.Weather
 import com.example.kotlin_tasktwo.viewmodel.AppState
+import domain.convert.convertHistoryEntityToWeather
 import domain.room.room.repository_history.RepositoryHistoryRoomImp
 
 class HistoryViewModel (private val liveData: MutableLiveData<AppState> = MutableLiveData()) :
@@ -24,7 +26,11 @@ class HistoryViewModel (private val liveData: MutableLiveData<AppState> = Mutabl
         })
 
 
+
+
     }
+
+
 
 
     interface CallbakF {

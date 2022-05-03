@@ -2,7 +2,7 @@ package com.example.kotlin_tasktwo.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kotlin_tasktwo.Repository.RepositoryImpl
+import com.example.kotlin_tasktwo.repository.RepositoryImpl
 import java.lang.Thread.sleep
 
 

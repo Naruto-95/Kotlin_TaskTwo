@@ -1,4 +1,4 @@
-package com.example.kotlin_tasktwo.Lesson_6
+package com.example.kotlin_tasktwo.lesson_6
 
 import android.content.BroadcastReceiver
 import android.content.Context

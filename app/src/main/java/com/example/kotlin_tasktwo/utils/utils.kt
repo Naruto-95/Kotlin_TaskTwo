@@ -1,9 +1,9 @@
 package com.example.kotlin_tasktwo.utils
 
-import com.example.kotlin_tasktwo.Repository.DTO.Fact
-import com.example.kotlin_tasktwo.Repository.DTO.WeatherDTO
-import com.example.kotlin_tasktwo.Repository.Weather
-import com.example.kotlin_tasktwo.Repository.getDefaultCity
+import com.example.kotlin_tasktwo.repository.DTO.Fact
+import com.example.kotlin_tasktwo.repository.DTO.WeatherDTO
+import com.example.kotlin_tasktwo.repository.Weather
+import com.example.kotlin_tasktwo.repository.getDefaultCity
 
 //приветсвие сервиса в логах(серверы)
 const val KEY_SERVICE = "kay_service"
@@ -26,7 +26,7 @@ const val KEY_WEATHER = "weather"
 const val KEY_WEATHER_WAVE = "weather_wave"
 
 const val KEY_SETTINGS = "settings"
-const val KEY_RUSSIAN = "isRussian "
+var KEY_RUSSIAN = "isRussian "
 
 //слипы сервеса
 const val SLEEP_SERVICE = 1000L

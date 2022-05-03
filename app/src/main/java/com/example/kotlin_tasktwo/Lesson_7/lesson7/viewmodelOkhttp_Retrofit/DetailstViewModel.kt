@@ -1,11 +1,11 @@
-package com.example.kotlin_tasktwo.Lesson_7.repository.viewmodelOkhttp_Retrofit
+package com.example.kotlin_tasktwo.Lesson_7.lesson7.viewmodelOkhttp_Retrofit
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kotlin_tasktwo.Lesson_7.repository.DetailstRepository
-import com.example.kotlin_tasktwo.Lesson_7.repository.DetailstRepositoryReteofitImpl
-import com.example.kotlin_tasktwo.Repository.City
-import com.example.kotlin_tasktwo.Repository.Weather
+import com.example.kotlin_tasktwo.Lesson_7.lesson7.DetailstRepository
+import com.example.kotlin_tasktwo.Lesson_7.lesson7.DetailstRepositoryReteofitImpl
+import com.example.kotlin_tasktwo.repository.City
+import com.example.kotlin_tasktwo.repository.Weather
 import com.example.kotlin_tasktwo.utils.ERROR_SERVER
 import domain.room.room.repository_history.RepositoryHistoryAdd
 import domain.room.room.repository_history.RepositoryHistoryRoomImp

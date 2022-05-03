@@ -1,11 +1,11 @@
-package com.example.kotlin_tasktwo.Details
+package com.example.kotlin_tasktwo.details
 
 import android.app.IntentService
 import android.content.Intent
 import android.util.Log
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.kotlin_tasktwo.BuildConfig
-import com.example.kotlin_tasktwo.Repository.DTO.WeatherDTO
+import com.example.kotlin_tasktwo.repository.DTO.WeatherDTO
 import com.example.kotlin_tasktwo.utils.*
 import com.google.gson.Gson
 import java.io.BufferedReader

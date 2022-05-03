@@ -1,10 +1,10 @@
-package com.example.kotlin_tasktwo.Lesson_7.repository
+package com.example.kotlin_tasktwo.Lesson_7.lesson7
 
 import com.example.kotlin_tasktwo.BuildConfig
-import com.example.kotlin_tasktwo.Lesson_7.repository.viewmodelOkhttp_Retrofit.DetailstState
-import com.example.kotlin_tasktwo.Lesson_7.repository.viewmodelOkhttp_Retrofit.DetailstViewModel
-import com.example.kotlin_tasktwo.Repository.City
-import com.example.kotlin_tasktwo.Repository.DTO.WeatherDTO
+import com.example.kotlin_tasktwo.Lesson_7.lesson7.viewmodelOkhttp_Retrofit.DetailstState
+import com.example.kotlin_tasktwo.Lesson_7.lesson7.viewmodelOkhttp_Retrofit.DetailstViewModel
+import com.example.kotlin_tasktwo.repository.City
+import com.example.kotlin_tasktwo.repository.DTO.WeatherDTO
 import com.example.kotlin_tasktwo.utils.ERROR_SERVER
 import com.example.kotlin_tasktwo.utils.KEY_YANDEX_DOMEN
 import com.example.kotlin_tasktwo.utils.REQUEST_ERROR
@@ -23,7 +23,7 @@ class DetailstRepositoryReteofitImpl : DetailstRepository {
         val weather_API = Retrofit.Builder().apply {
             baseUrl(KEY_YANDEX_DOMEN)
             addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-        }.build().create(Weather_API::class.java)
+        }.build().create(WeatherApi::class.java)
         /*Thread {
             val response =
                 weather_API.getWeather(BuildConfig.WEATHER_API_KEY, city.lat, city.lon).execute()

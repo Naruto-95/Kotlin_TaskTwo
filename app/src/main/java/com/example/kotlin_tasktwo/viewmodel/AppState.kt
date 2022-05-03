@@ -1,7 +1,7 @@
 package com.example.kotlin_tasktwo.viewmodel
 
 
-import com.example.kotlin_tasktwo.Repository.Weather
+import com.example.kotlin_tasktwo.repository.Weather
 
 
 sealed class AppState{

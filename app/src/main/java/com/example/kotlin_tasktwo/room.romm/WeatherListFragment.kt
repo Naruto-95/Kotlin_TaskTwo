@@ -1,22 +1,18 @@
 package com.example.kotlin_tasktwo.room.romm
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.kotlin_tasktwo.Details.DetailstFragment
-import com.example.kotlin_tasktwo.Details.DetailstFragment.Companion.BUNDLE_WEATHER
+import com.example.kotlin_tasktwo.details.DetailstFragment
+import com.example.kotlin_tasktwo.details.DetailstFragment.Companion.BUNDLE_WEATHER
 import com.example.kotlin_tasktwo.R
-import com.example.kotlin_tasktwo.Repository.Weather
+import com.example.kotlin_tasktwo.repository.Weather
 import com.example.kotlin_tasktwo.databinding.WeatherListFragmentBinding
-import com.example.kotlin_tasktwo.utils.KEY_RUSSIAN
-import com.example.kotlin_tasktwo.utils.KEY_SETTINGS
 import com.example.kotlin_tasktwo.viewmodel.AppState
 import com.example.kotlin_tasktwo.viewmodel.MainViewModel
-import com.google.android.material.snackbar.Snackbar
 import android.view.View as View
 
 

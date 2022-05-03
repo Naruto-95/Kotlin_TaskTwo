@@ -1,6 +1,6 @@
-package com.example.kotlin_tasktwo.Lesson_7.repository
+package com.example.kotlin_tasktwo.Lesson_7.lesson7
 
-import com.example.kotlin_tasktwo.Repository.DTO.WeatherDTO
+import com.example.kotlin_tasktwo.repository.DTO.WeatherDTO
 import com.example.kotlin_tasktwo.utils.KEY_BUN_LAT
 import com.example.kotlin_tasktwo.utils.KEY_BUN_LON
 import com.example.kotlin_tasktwo.utils.KEY_YANDEX
@@ -10,7 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
 
-interface Weather_API {
+interface WeatherApi {
     @GET(KEY_YANDEX)
     fun getWeather(
         @Header(KEY_YANDEX_API)apikay:String,

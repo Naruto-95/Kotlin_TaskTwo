@@ -1,8 +1,7 @@
-package com.example.kotlin_tasktwo.Details
+package com.example.kotlin_tasktwo.details
 
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.load
-import com.example.kotlin_tasktwo.Lesson_7.repository.viewmodelOkhttp_Retrofit.DetailstState
-import com.example.kotlin_tasktwo.Lesson_7.repository.viewmodelOkhttp_Retrofit.DetailstViewModel
-import com.example.kotlin_tasktwo.MyApp
+import com.example.kotlin_tasktwo.Lesson_7.lesson7.viewmodelOkhttp_Retrofit.DetailstState
+import com.example.kotlin_tasktwo.Lesson_7.lesson7.viewmodelOkhttp_Retrofit.DetailstViewModel
 import com.example.kotlin_tasktwo.R
-import com.example.kotlin_tasktwo.Repository.Weather
+import com.example.kotlin_tasktwo.repository.Weather
 import com.example.kotlin_tasktwo.databinding.DetailsFragmentBinding
 import com.google.android.material.snackbar.Snackbar
 

@@ -1,9 +1,9 @@
-package com.example.kotlin_tasktwo.Repository
+package com.example.kotlin_tasktwo.repository
 
 import android.os.Handler
 import android.os.Looper
 import com.example.kotlin_tasktwo.BuildConfig
-import com.example.kotlin_tasktwo.Repository.DTO.WeatherDTO
+import com.example.kotlin_tasktwo.repository.DTO.WeatherDTO
 import com.example.kotlin_tasktwo.utils.KEY_YANDEX
 import com.example.kotlin_tasktwo.utils.KEY_YANDEX_API
 import com.example.kotlin_tasktwo.utils.KEY_YANDEX_DOMEN

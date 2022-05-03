@@ -1,4 +1,4 @@
-package com.example.kotlin_tasktwo.Repository
+package com.example.kotlin_tasktwo.repository
 
 import com.example.kotlin_tasktwo.viewmodel.AppStateError
 

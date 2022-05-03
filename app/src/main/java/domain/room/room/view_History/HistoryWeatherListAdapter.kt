@@ -7,8 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.decode.SvgDecoder
-import coil.load
-import com.example.kotlin_tasktwo.Repository.Weather
+import com.example.kotlin_tasktwo.repository.Weather
 import com.example.kotlin_tasktwo.databinding.HistoryRecyclerWeatherListFragmentBinding
 
 class HistoryWeatherListAdapter (
