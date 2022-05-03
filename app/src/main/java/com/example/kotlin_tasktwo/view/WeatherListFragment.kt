@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -20,10 +21,10 @@ import com.example.kotlin_tasktwo.R
 import com.example.kotlin_tasktwo.databinding.WeatherListFragmentBinding
 import com.example.kotlin_tasktwo.details.DetailstFragment
 import com.example.kotlin_tasktwo.details.DetailstFragment.Companion.BUNDLE_WEATHER
+import com.example.kotlin_tasktwo.repository.City
 import com.example.kotlin_tasktwo.repository.Weather
 import com.example.kotlin_tasktwo.viewmodel.AppState
 import com.example.kotlin_tasktwo.viewmodel.MainViewModel
-import java.util.Objects.toString
 
 
 class WeatherListFragment : Fragment(), OnItemListClickListiner {
@@ -84,8 +85,8 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
     @SuppressLint("MissingPermission")
     private fun getLocation() {
         context?.let {
-            val locationManedger = it.getSystemService(Context.LOCATION_SERVICE )as LocationManager
-            if (locationManedger.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            val locationManedger = it.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            if (locationManedger.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 val provaiderGps = locationManedger.getProvider(LocationManager.GPS_PROVIDER)
                 provaiderGps?.let {
                     locationManedger.requestLocationUpdates(
@@ -101,9 +102,53 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
 
     }
 
+    fun getAddressByLocation(location: Location) {
+        val geocoder = Geocoder(requireContext())
+        Thread {
+           val addressText =  geocoder.getFromLocation(
+                location.latitude,
+                location.longitude,
+                1000000
+            )[0].getAddressLine(0)
+            requireActivity().runOnUiThread{
+                showAddressDialog(addressText,location)
+            }
+
+        }.start()
+
+
+    }
+
+    private fun showAddressDialog(address: String, location: Location) {
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(getString(R.string.dialog_address_title))
+                .setMessage(address)
+                .setPositiveButton(getString(R.string.dialog_address_get_weather)) { _, _ ->
+                    onitemClik(
+                        Weather(
+                            City(
+                                address,
+                                location.latitude,
+                                location.longitude
+                            )
+                        )
+                    )
+                }
+                .setNegativeButton(getString(R.string.dialog_button_close)) { dialog,
+                                                                              _ ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
+        }
+    }
+
+
     private val LocationListener = object : LocationListener {
-        override fun onLocationChanged( location: Location) {
-           Log.d("@@@",location.toString())
+        override fun onLocationChanged(location: Location) {
+            Log.d("@@@", location.toString())
+            getAddressByLocation(location)
         }
     }
 
