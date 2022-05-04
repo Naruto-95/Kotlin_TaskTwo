@@ -1,12 +1,16 @@
 package com.example.kotlin_tasktwo.lesson_10
 
+import android.graphics.Color
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.kotlin_tasktwo.R
+import com.example.kotlin_tasktwo.databinding.DetailsFragmentBinding
+import com.example.kotlin_tasktwo.databinding.FragmentMapsWrapperBinding
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -18,6 +22,17 @@ class MapsFragment : Fragment() {
     private lateinit var map:GoogleMap
     private val markes: ArrayList<Marker> = arrayListOf()
 
+    private var _binding: FragmentMapsWrapperBinding? = null
+    private val binding: FragmentMapsWrapperBinding
+        get() {
+            return _binding!!
+        }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+ 
+    }
 
     private fun addMarkerArray(location:LatLng){
         val marker = setMarker(location,markes.size.toString(),R.drawable.ic_map_pin)
@@ -53,16 +68,30 @@ return map.addMarker(MarkerOptions()
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         map.setOnMapLongClickListener {
             addMarkerArray(it)
+            drawLine()
+        }
+
+    }
+
+    private fun drawLine(){
+        var previousBefore:Marker? = null
+        markes.forEach{current->
+            previousBefore?.let { previous->
+                map.addPolyline(PolylineOptions().add(previous.position,current.position).color(
+                    Color.GREEN).width(10f))
+
+            }
+            previousBefore = current
         }
 
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_maps, container, false)
+    ): View {
+        _binding = FragmentMapsWrapperBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

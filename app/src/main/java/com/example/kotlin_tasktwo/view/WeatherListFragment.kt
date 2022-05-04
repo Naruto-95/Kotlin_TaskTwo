@@ -30,17 +30,28 @@ import java.util.*
 
 class WeatherListFragment : Fragment(), OnItemListClickListiner {
 
-    lateinit var binding: WeatherListFragmentBinding
     private lateinit var viewModel: MainViewModel
     private val adapter = WeatherListAdapter(this)
     private var isRussin = true
+    private var _binding: WeatherListFragmentBinding? = null
+    private val binding: WeatherListFragmentBinding
+        get() {
+            return _binding!!
+        }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+
+    }
+
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = WeatherListFragmentBinding.inflate(inflater, container, false)
+        _binding = WeatherListFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 

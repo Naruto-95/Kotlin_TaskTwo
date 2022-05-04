@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.kotlin_tasktwo.details.DetailstFragment
 import com.example.kotlin_tasktwo.details.DetailstFragment.Companion.BUNDLE_WEATHER
 import com.example.kotlin_tasktwo.R
+import com.example.kotlin_tasktwo.databinding.FragmentMapsWrapperBinding
 import com.example.kotlin_tasktwo.repository.Weather
 import com.example.kotlin_tasktwo.databinding.WeatherListFragmentBinding
 import com.example.kotlin_tasktwo.viewmodel.AppState
@@ -18,11 +19,21 @@ import android.view.View as View
 
 class WeatherListFragment : Fragment(), OnItemListClickListiner {
 
-    lateinit var binding: WeatherListFragmentBinding
+
     private lateinit var viewModel: MainViewModel
     private val adapter = WeatherListAdapter(this)
     private var isRussin = true
+    private var _binding: WeatherListFragmentBinding? = null
+    private val binding: WeatherListFragmentBinding
+        get() {
+            return _binding!!
+        }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+
+    }
 
 
 
@@ -30,7 +41,7 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = WeatherListFragmentBinding.inflate(inflater, container, false)
+        _binding = WeatherListFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
     private var isDataSetWorld: Boolean = false
