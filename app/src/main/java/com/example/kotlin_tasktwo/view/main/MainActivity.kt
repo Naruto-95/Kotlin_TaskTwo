@@ -1,23 +1,19 @@
 package com.example.kotlin_tasktwo.view.main
 
-import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.media.audiofx.BassBoost
 import android.os.Bundle
-import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlin_tasktwo.MyApp
 import com.example.kotlin_tasktwo.R
+import com.example.kotlin_tasktwo.lesson_10.MapsFragment
 import com.example.kotlin_tasktwo.lesson_6.MyBroadcastReceiver
 import com.example.kotlin_tasktwo.lesson_6.Service
 import com.example.kotlin_tasktwo.lesson_6.ThreadFragment
 import com.example.kotlin_tasktwo.lisson_9.ContentProviderFragment
-import com.example.kotlin_tasktwo.utils.KEY_RUSSIAN
 import com.example.kotlin_tasktwo.utils.KEY_SERVICE
-import com.example.kotlin_tasktwo.utils.KEY_SETTINGS
 import com.example.kotlin_tasktwo.utils.WAVE_MY_ACTION
 import com.example.kotlin_tasktwo.view.WeatherListFragment
 import domain.room.room.view_History.HistoryWeatherListFragment
@@ -61,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_thread, menu)
+        menuInflater.inflate(R.menu.menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -84,6 +80,13 @@ class MainActivity : AppCompatActivity() {
             R.id.menuContentProvider -> {
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.container, ContentProviderFragment.newInstance())
+                    .addToBackStack("")
+                    .commit()
+
+            }
+            R.id.menuGoogleMaps -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, MapsFragment())
                     .addToBackStack("")
                     .commit()
 

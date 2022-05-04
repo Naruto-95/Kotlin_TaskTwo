@@ -25,6 +25,7 @@ import com.example.kotlin_tasktwo.repository.City
 import com.example.kotlin_tasktwo.repository.Weather
 import com.example.kotlin_tasktwo.viewmodel.AppState
 import com.example.kotlin_tasktwo.viewmodel.MainViewModel
+import java.util.*
 
 
 class WeatherListFragment : Fragment(), OnItemListClickListiner {
@@ -103,7 +104,7 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
     }
 
     fun getAddressByLocation(location: Location) {
-        val geocoder = Geocoder(requireContext())
+        val geocoder = Geocoder(requireContext(), Locale("ru","RU"))
         Thread {
            val addressText =  geocoder.getFromLocation(
                 location.latitude,
@@ -236,6 +237,7 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
 
         }
 
+        else -> {}
     }
 
 
