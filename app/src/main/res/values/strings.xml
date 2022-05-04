@@ -31,6 +31,8 @@
     <string name="dialog_address_title">Ваш адрес</string>
     © geekbrains.ru 3
     <string name="dialog_address_get_weather">Узнать погоду</string>
+    <string name="search">Поиск</string>
+    <string name="Address">Введите адрес</string>
 
 
 </resources>
