@@ -12,10 +12,30 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 
 class MapsFragment : Fragment() {
+    private lateinit var map:GoogleMap
+    private val markes: ArrayList<Marker> = arrayListOf()
+
+
+    private fun addMarkerArray(location:LatLng){
+        val marker = setMarker(location,markes.size.toString(),R.drawable.ic_map_pin)
+        markes.add(marker)
+
+    }
+
+    private fun setMarker(
+        location: LatLng,
+        searchText: String,
+        resourceId: Int):Marker  {
+return map.addMarker(MarkerOptions()
+    .position(location)
+    .title(searchText)
+    .icon(BitmapDescriptorFactory.fromResource(resourceId)))!!
+
+}
+
 
     private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -27,9 +47,14 @@ class MapsFragment : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
+        map = googleMap
         val sydney = LatLng(-34.0, 151.0)
         googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        map.setOnMapLongClickListener {
+            addMarkerArray(it)
+        }
+
     }
 
     override fun onCreateView(
@@ -46,3 +71,5 @@ class MapsFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
 }
+
+
