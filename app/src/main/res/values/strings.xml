@@ -33,6 +33,9 @@
     <string name="dialog_address_get_weather">Узнать погоду</string>
     <string name="search">Поиск</string>
     <string name="Address">Введите адрес</string>
+    <string name="Invalid_address">Адрес введен некорректно!</string>
+    <string name="Exact_address">Пожалуйста,введите точный адрес.</string>
+    <string name="Okey">Ok</string>
 
 
 </resources>

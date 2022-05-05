@@ -190,7 +190,7 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
     ) {
         if (requestCode == REQUEST_CODE) {
             for (i in permissions.indices) {
-                if (permissions[i] == Manifest.permission.CALL_PHONE && grantResults[i] ==
+                if (permissions[i] == Manifest.permission.ACCESS_FINE_LOCATION && grantResults[i] ==
                     PackageManager.PERMISSION_GRANTED
                 ) {
                     getLocation()
