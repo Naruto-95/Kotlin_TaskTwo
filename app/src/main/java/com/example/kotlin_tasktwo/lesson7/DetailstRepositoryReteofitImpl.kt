@@ -1,8 +1,8 @@
-package com.example.kotlin_tasktwo.Lesson_7.lesson7
+package com.example.kotlin_tasktwo.lesson7
 
 import com.example.kotlin_tasktwo.BuildConfig
-import com.example.kotlin_tasktwo.Lesson_7.lesson7.viewmodelOkhttp_Retrofit.DetailstState
-import com.example.kotlin_tasktwo.Lesson_7.lesson7.viewmodelOkhttp_Retrofit.DetailstViewModel
+import com.example.kotlin_tasktwo.lesson7.viewmodelOkhttp_Retrofit.DetailstState
+import com.example.kotlin_tasktwo.lesson7.viewmodelOkhttp_Retrofit.DetailstViewModel
 import com.example.kotlin_tasktwo.repository.City
 import com.example.kotlin_tasktwo.repository.DTO.WeatherDTO
 import com.example.kotlin_tasktwo.utils.ERROR_SERVER

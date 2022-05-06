@@ -1,9 +1,9 @@
-package com.example.kotlin_tasktwo.Lesson_7.lesson7.viewmodelOkhttp_Retrofit
+package com.example.kotlin_tasktwo.lesson7.viewmodelOkhttp_Retrofit
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kotlin_tasktwo.Lesson_7.lesson7.DetailstRepository
-import com.example.kotlin_tasktwo.Lesson_7.lesson7.DetailstRepositoryReteofitImpl
+import com.example.kotlin_tasktwo.lesson7.DetailstRepository
+import com.example.kotlin_tasktwo.lesson7.DetailstRepositoryReteofitImpl
 import com.example.kotlin_tasktwo.repository.City
 import com.example.kotlin_tasktwo.repository.Weather
 import com.example.kotlin_tasktwo.utils.ERROR_SERVER
@@ -15,7 +15,7 @@ class DetailstViewModel(
     private val liveData: MutableLiveData<DetailstState> = MutableLiveData(),
     //  private val repository: DetailstRepository = DetailstRepositoryOKHttpImpl(),
     private val repository: DetailstRepository = DetailstRepositoryReteofitImpl(),
-            private val repositoryAdd: RepositoryHistoryAdd = RepositoryHistoryRoomImp()
+    private val repositoryAdd: RepositoryHistoryAdd = RepositoryHistoryRoomImp()
 ) : ViewModel() {
 
     fun getliveData() = liveData

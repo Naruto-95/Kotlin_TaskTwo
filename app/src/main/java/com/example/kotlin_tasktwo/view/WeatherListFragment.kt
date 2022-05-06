@@ -115,7 +115,7 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
     }
 
     fun getAddressByLocation(location: Location) {
-        val geocoder = Geocoder(requireContext(), Locale("ru","RU"))
+        val geocoder = Geocoder(requireContext(), Locale.getDefault())
         Thread {
            val addressText =  geocoder.getFromLocation(
                 location.latitude,

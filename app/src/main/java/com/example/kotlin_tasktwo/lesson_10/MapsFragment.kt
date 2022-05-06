@@ -24,10 +24,14 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_maps.*
+import kotlinx.android.synthetic.main.fragment_maps_wrapper.*
+import java.io.IOException
 import java.lang.reflect.InvocationTargetException
 import java.util.*
 import kotlin.collections.ArrayList
 import com.google.android.material.snackbar.Snackbar.make as make1
+import com.google.android.material.snackbar.Snackbar.make as make2
 
 class MapsFragment : Fragment() {
     private lateinit var map: GoogleMap
@@ -120,12 +124,12 @@ class MapsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
-        AddressSearch()
+        addressSearch()
 
 
     }
 
-    private fun AddressSearch() {
+    private fun addressSearch() {
         binding.buttonSearch.setOnClickListener {
             try {
                 val searchText = binding.searchAddress.text.toString()
@@ -156,14 +160,17 @@ class MapsFragment : Fragment() {
 
 
 
-            }catch (e: InvocationTargetException){
-                Toast.makeText(requireContext(),"Что-то пошло не так",Toast.LENGTH_LONG).show()
-            }
+            }catch (e: IOException){
+               Toast.makeText(requireContext(),"Поле пустое,введите адрес",Toast.LENGTH_SHORT).show()
+
+           }
 
 
         }
 
     }
+
+
 }
 
 

@@ -12,7 +12,7 @@ import com.example.kotlin_tasktwo.lesson_10.MapsFragment
 import com.example.kotlin_tasktwo.lesson_6.MyBroadcastReceiver
 import com.example.kotlin_tasktwo.lesson_6.Service
 import com.example.kotlin_tasktwo.lesson_6.ThreadFragment
-import com.example.kotlin_tasktwo.lisson_9.ContentProviderFragment
+import com.example.kotlin_tasktwo.lesson_9.ContentProviderFragment
 import com.example.kotlin_tasktwo.utils.KEY_SERVICE
 import com.example.kotlin_tasktwo.utils.WAVE_MY_ACTION
 import com.example.kotlin_tasktwo.view.WeatherListFragment
