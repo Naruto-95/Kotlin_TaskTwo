@@ -1,6 +1,5 @@
 package com.example.kotlin_tasktwo.view.main
 
-import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -23,7 +22,6 @@ import com.example.kotlin_tasktwo.utils.KEY_SERVICE
 import com.example.kotlin_tasktwo.utils.WAVE_MY_ACTION
 import com.example.kotlin_tasktwo.view.WeatherListFragment
 import domain.room.room.view_History.HistoryWeatherListFragment
-import kotlinx.android.synthetic.main.history_recycler_weather_list_fragment.*
 
 //3:17
 
@@ -41,14 +39,14 @@ class MainActivity : AppCompatActivity() {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationBuilderHIGH = NotificationCompat.Builder(this, CHANNEL_ID_HIGH).apply {
             setSmallIcon(R.drawable.ic_cahnnalone)
-            setContentTitle("1 channel")
-            setContentText("www1")
+            setContentTitle(getString(R.string.Notification))
+            setContentText(getString(R.string.App_One_Channel))
             priority = NotificationManager.IMPORTANCE_HIGH
         }
         val notificationBuilderLOW  = NotificationCompat.Builder(this, CHANNEL_ID_LOW ).apply {
             setSmallIcon(R.drawable.coco)
-            setContentTitle("2 channel")
-            setContentText("www2")
+            setContentTitle(getString(R.string.Second_notification))
+            setContentText(getString(R.string.App_Two_Channel))
             priority = NotificationManager.IMPORTANCE_LOW
         }
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){

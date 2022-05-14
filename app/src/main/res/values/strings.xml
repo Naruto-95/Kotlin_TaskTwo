@@ -29,13 +29,17 @@
     <string name="dialog_rationale_give_access">Предоставить доступ</string>
     <string name="dialog_rationale_decline">Не надо</string>
     <string name="dialog_address_title">Ваш адрес</string>
-    © geekbrains.ru 3
+
     <string name="dialog_address_get_weather">Узнать погоду</string>
     <string name="search">Поиск</string>
     <string name="Address">Введите адрес</string>
     <string name="Invalid_address">Адрес введен некорректно!</string>
     <string name="Exact_address">Пожалуйста,введите точный адрес.</string>
     <string name="Okey">Ok</string>
+    <string name="Notification">Уведомление первое</string>
+    <string name="App_One_Channel">Проверка первого канала</string>
+    <string name="Second_notification">Уведомление второе </string>
+    <string name="App_Two_Channel">Проверка второго канала</string>
 
 
 </resources>
