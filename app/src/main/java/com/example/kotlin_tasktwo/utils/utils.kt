@@ -12,7 +12,7 @@ const val KEY_RECEIVER = "kay_receiver"
 //ошибки
 const val ERROR_SERVER = "ошибка сервера"
 const val REQUEST_ERROR = "Ошибка запроса на сервер"
-const val CORRUPTED_DATA = "Неполные данные"
+
 
 // Яндекс домены и тд
 const val KEY_YANDEX = "v2/informers?"
@@ -26,7 +26,8 @@ const val KEY_WEATHER = "weather"
 const val KEY_WEATHER_WAVE = "weather_wave"
 
 const val KEY_SETTINGS = "settings"
-var KEY_RUSSIAN = "isRussian "
+const val  KEY_RUSSIAN_P = "isRussianPreferences "
+const val  KEY_APP_RUSSIAN_P = "FailAppIsRussianPreferences "
 
 //слипы сервеса
 const val SLEEP_SERVICE = 1000L

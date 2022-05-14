@@ -1,37 +1,30 @@
 package com.example.kotlin_tasktwo.lesson_10
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Geocoder
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.fragment.app.Fragment
 import com.example.kotlin_tasktwo.R
-import com.example.kotlin_tasktwo.databinding.DetailsFragmentBinding
 import com.example.kotlin_tasktwo.databinding.FragmentMapsWrapperBinding
-
+import com.example.kotlin_tasktwo.details.DetailstFragment
+import com.example.kotlin_tasktwo.repository.City
+import com.example.kotlin_tasktwo.repository.Weather
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_maps.*
-import kotlinx.android.synthetic.main.fragment_maps_wrapper.*
 import java.io.IOException
-import java.lang.reflect.InvocationTargetException
 import java.util.*
-import kotlin.collections.ArrayList
-import com.google.android.material.snackbar.Snackbar.make as make1
-import com.google.android.material.snackbar.Snackbar.make as make2
 
 class MapsFragment : Fragment() {
     private lateinit var map: GoogleMap
@@ -70,6 +63,7 @@ class MapsFragment : Fragment() {
     }
 
 
+    @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { googleMap ->
 
         map = googleMap
@@ -80,6 +74,20 @@ class MapsFragment : Fragment() {
             addMarkerArray(it)
             drawLine()
         }
+        map.setOnMapClickListener {
+            val weather = Weather(city = City(getAddressByLocation(it), it.latitude, it.longitude))
+            requireActivity().supportFragmentManager.beginTransaction().add(
+                R.id.container,
+                DetailstFragment.newInstance(Bundle().apply {
+                    putParcelable(
+                        DetailstFragment.BUNDLE_WEATHER,
+                        weather
+                    )
+                })
+            ).addToBackStack("").commit()
+
+
+        }
         map.uiSettings.isZoomControlsEnabled = true
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
@@ -88,13 +96,22 @@ class MapsFragment : Fragment() {
             )
             == PackageManager.PERMISSION_GRANTED
         )
-        map.isMyLocationEnabled = true
+            map.isMyLocationEnabled = true
 
 
     }
 
+    fun getAddressByLocation(location: LatLng): String {
+        val geocoder = Geocoder(requireContext(), Locale.getDefault())
+        val addressText = geocoder.getFromLocation(
+            location.latitude,
+            location.longitude,
+            1000000
+        )[0].getAddressLine(0)
+        return addressText
 
 
+    }
 
     private fun drawLine() {
         var previousBefore: Marker? = null
@@ -133,7 +150,7 @@ class MapsFragment : Fragment() {
         binding.buttonSearch.setOnClickListener {
             try {
                 val searchText = binding.searchAddress.text.toString()
-                val geocoder = Geocoder(requireContext())
+                val geocoder = Geocoder(requireContext(), Locale.getDefault())
                 val result = geocoder.getFromLocationName(searchText, 1)
                 val location = LatLng(result[0].latitude, result[0].longitude)
 
@@ -148,22 +165,22 @@ class MapsFragment : Fragment() {
                     )
 
                 )
-            } catch (e:IndexOutOfBoundsException){
-          AlertDialog.Builder(requireContext())
-              .setTitle(getString(R.string.Invalid_address))
-              .setMessage(getString(R.string.Exact_address))
-              .setNegativeButton(getString(R.string.Okey)){
-                      dialog, _ -> dialog.dismiss()
-              }
-              .create()
-              .show()
+            } catch (e: IndexOutOfBoundsException) {
+                AlertDialog.Builder(requireContext())
+                    .setTitle(getString(R.string.Invalid_address))
+                    .setMessage(getString(R.string.Exact_address))
+                    .setNegativeButton(getString(R.string.Okey)) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()
 
 
+            } catch (e: IOException) {
+                Toast.makeText(requireContext(), "Поле пустое,введите адрес", Toast.LENGTH_SHORT)
+                    .show()
 
-            }catch (e: IOException){
-               Toast.makeText(requireContext(),"Поле пустое,введите адрес",Toast.LENGTH_SHORT).show()
-
-           }
+            }
 
 
         }

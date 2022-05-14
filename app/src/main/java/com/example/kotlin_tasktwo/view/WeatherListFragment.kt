@@ -46,7 +46,6 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
     }
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,7 +54,7 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
         return binding.root
     }
 
-    private var isDataSetWorld: Boolean = false
+    private var isRussian = true
 
     //Observer, он выполняет метод renderData, как только LiveData обновляет данные,которые она хранит.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,6 +65,7 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
         viewModel.getLiveData().observe(viewLifecycleOwner, observer)
         FubCities()
         FubLocation()
+
 
     }
 
@@ -117,13 +117,13 @@ class WeatherListFragment : Fragment(), OnItemListClickListiner {
     fun getAddressByLocation(location: Location) {
         val geocoder = Geocoder(requireContext(), Locale.getDefault())
         Thread {
-           val addressText =  geocoder.getFromLocation(
+            val addressText = geocoder.getFromLocation(
                 location.latitude,
                 location.longitude,
                 1000000
             )[0].getAddressLine(0)
-            requireActivity().runOnUiThread{
-                showAddressDialog(addressText,location)
+            requireActivity().runOnUiThread {
+                showAddressDialog(addressText, location)
             }
 
         }.start()
