@@ -21,11 +21,7 @@ class MyApp : Application() {
 
                if (null == db) {
                    if (null != appContext) {
-
-                       db = Room.databaseBuilder(appContext!!, DataBase::class.java, " 111 ")
-                           .allowMainThreadQueries()
-
-                           .build()
+                       db = Room.databaseBuilder(appContext!!, DataBase::class.java, " 111 ").build()
                    } else {
                        throw IllegalStateException(" something went wrong with AppContext ")
                    }

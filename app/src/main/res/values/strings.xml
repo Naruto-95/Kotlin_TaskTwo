@@ -40,6 +40,8 @@
     <string name="App_One_Channel">Проверка первого канала</string>
     <string name="Second_notification">Уведомление второе </string>
     <string name="App_Two_Channel">Проверка второго канала</string>
+    <string name="Invalid_addressTwo">Вы нажали на пустое поле </string>
+    <string name="Exact_addressTwo">Пожалуйста, нажмите на континент</string>
 
 
 </resources>

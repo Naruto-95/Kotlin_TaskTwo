@@ -15,15 +15,20 @@ class RepositoryHistoryRoomImp : RepositoryHistory, RepositoryHistoryForALL,Repo
     }
 
     override fun getWeatherHistoryForAll(callbak: HistoryViewModel.CallbakF) {
+Thread{
+    callbak.onResponse(convertHistoryEntityToWeather(MyApp.getHistoryDao().getAll()))
+}.start()
 
-            callbak.onResponse(convertHistoryEntityToWeather(MyApp.getHistoryDao().getAll()))
 
 
     }
 
 
     override fun getAddWeather(weather: Weather) {
-        MyApp.getHistoryDao().insert(convertWeatherToEntity(weather))
+        Thread{
+            MyApp.getHistoryDao().insert(convertWeatherToEntity(weather))
+        }.start()
+
     }
 
 }

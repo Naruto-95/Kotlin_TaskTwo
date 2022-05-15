@@ -23,6 +23,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
 import java.util.*
 
@@ -75,19 +76,32 @@ class MapsFragment : Fragment() {
             drawLine()
         }
         map.setOnMapClickListener {
-            val weather = Weather(city = City(getAddressByLocation(it), it.latitude, it.longitude))
-            requireActivity().supportFragmentManager.beginTransaction().add(
-                R.id.container,
-                DetailstFragment.newInstance(Bundle().apply {
-                    putParcelable(
-                        DetailstFragment.BUNDLE_WEATHER,
-                        weather
-                    )
-                })
-            ).addToBackStack("").commit()
+            try {
+                val weather = Weather(city = City(getAddressByLocation(it), it.latitude, it.longitude))
+                requireActivity().supportFragmentManager.beginTransaction().add(
+                    R.id.container,
+                    DetailstFragment.newInstance(Bundle().apply {
+                        putParcelable(
+                            DetailstFragment.BUNDLE_WEATHER,
+                            weather
+                        )
+                    })
+                ).addToBackStack("").commit()
 
 
-        }
+            }catch (e:IndexOutOfBoundsException){
+                AlertDialog.Builder(requireContext())
+                    .setTitle(getString(R.string.Invalid_addressTwo))
+                    .setMessage(getString(R.string.Exact_addressTwo))
+                    .setNegativeButton(getString(R.string.Okey)) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()
+
+            }
+            }
+
         map.uiSettings.isZoomControlsEnabled = true
         if (ContextCompat.checkSelfPermission(
                 requireContext(),

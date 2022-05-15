@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
         val defaultRussian = true
         mySP.getBoolean(KEY_RUSSIAN, defaultRussian)*/
-        MyApp.getHistoryDao().getAll()
+
         push()
 
 
