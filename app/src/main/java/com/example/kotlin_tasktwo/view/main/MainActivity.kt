@@ -27,50 +27,7 @@ import domain.room.room.view_History.HistoryWeatherListFragment
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        private const val NOTIFICATION_ID_HIGH = 1
-        private const val NOTIFICATION_ID_LOW = 2
-        private const val CHANNEL_ID_HIGH = "channel_id_1"
-        private const val CHANNEL_ID_LOW = "channel_id_2"
-    }
 
-
-    private fun push(){
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val notificationBuilderHIGH = NotificationCompat.Builder(this, CHANNEL_ID_HIGH).apply {
-            setSmallIcon(R.drawable.ic_cahnnalone)
-            setContentTitle(getString(R.string.Notification))
-            setContentText(getString(R.string.App_One_Channel))
-            priority = NotificationManager.IMPORTANCE_HIGH
-        }
-        val notificationBuilderLOW  = NotificationCompat.Builder(this, CHANNEL_ID_LOW ).apply {
-            setSmallIcon(R.drawable.coco)
-            setContentTitle(getString(R.string.Second_notification))
-            setContentText(getString(R.string.App_Two_Channel))
-            priority = NotificationManager.IMPORTANCE_LOW
-        }
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-            val channelNameHIGH= "Name $CHANNEL_ID_HIGH "
-            val channelDescriptionHIGH = "Description $CHANNEL_ID_HIGH "
-            val channelPriorityHIGH = NotificationManager.IMPORTANCE_HIGH
-            val channelHIGH = NotificationChannel(CHANNEL_ID_HIGH,channelNameHIGH,channelPriorityHIGH).apply {
-                description = channelDescriptionHIGH
-            }
-            notificationManager.createNotificationChannel(channelHIGH)
-        }
-        notificationManager.notify(NOTIFICATION_ID_HIGH,notificationBuilderHIGH.build())
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-            val channelNameLOW= "Name $CHANNEL_ID_LOW "
-            val channelDescriptionLOW = "Description $CHANNEL_ID_LOW "
-            val channelPriorityLOW = NotificationManager.IMPORTANCE_LOW
-            val channelLOW = NotificationChannel(CHANNEL_ID_LOW,channelNameLOW,channelPriorityLOW).apply {
-                description = channelDescriptionLOW
-            }
-            notificationManager.createNotificationChannel(channelLOW)
-        }
-        notificationManager.notify(NOTIFICATION_ID_LOW,notificationBuilderLOW.build())
-
-    }
 
 
 
@@ -99,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         val defaultRussian = true
         mySP.getBoolean(KEY_RUSSIAN, defaultRussian)*/
 
-        push()
+
 
 
 

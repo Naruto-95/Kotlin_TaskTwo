@@ -51,6 +51,14 @@
 
         <service android:name=".lesson_6.Service" />
         <service android:name=".details.DetalisService" />
+        <service
+            android:name=".lesson11.MyService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <receiver
             android:name=".lesson_6.MyBroadcastReceiver"

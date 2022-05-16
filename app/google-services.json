@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "314324263632",
+    "project_id": "lyrical-diagram-349210",
+    "storage_bucket": "lyrical-diagram-349210.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314324263632:android:ff2d6b0df4da55959f34d5",
+        "android_client_info": {
+          "package_name": "com.example.kotlin_tasktwo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314324263632-bccmrvha00alggi5ervo6gs3r3grbt8f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0XEoqKIA22Su__kTyFdNOSawyN4VgINQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314324263632-bccmrvha00alggi5ervo6gs3r3grbt8f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
